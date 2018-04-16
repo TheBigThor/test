@@ -7,6 +7,27 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': 'a2327b74'
+  },
+  push: {
+    sender_id: '564553849534',
+    pluginConfig: {
+      ios: {
+        badge: true,
+        sound: true
+      },
+      android: {
+        iconColor: '#343434',
+        forceShow: true
+      }
+    }
+  }
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -14,7 +35,8 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    CloudModule.forRoot(cloudSettings)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
